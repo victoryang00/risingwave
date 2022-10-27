@@ -49,6 +49,10 @@ impl generic::GenericPlanRef for PlanRef {
     fn distribution(&self) -> &Distribution {
         &self.0.dist
     }
+
+    fn append_only(&self) -> bool {
+        self.0.append_only
+    }
 }
 
 impl generic::GenericBase for PlanBase {
