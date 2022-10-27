@@ -41,7 +41,7 @@ pub struct ObjectError {
     #[from]
     inner: ObjectErrorInner,
 
-    backtrace: Backtrace,
+    // backtrace: Backtrace,
 }
 
 impl std::fmt::Debug for ObjectError {
@@ -50,14 +50,15 @@ impl std::fmt::Debug for ObjectError {
 
         write!(f, "{}", self.inner)?;
         writeln!(f)?;
-        if let Some(backtrace) = self.inner.backtrace() {
-            write!(f, "  backtrace of inner error:\n{}", backtrace)?;
-        } else {
-            write!(f, "  backtrace of `ObjectError`:\n{}", self.backtrace)?;
-        }
+        // if let Some(backtrace) = self.inner.backtrace() {
+        //     write!(f, "  backtrace of inner error:\n{}", backtrace)?;
+        // } else {
+        //     write!(f, "  backtrace of `ObjectError`:\n{}", self.backtrace)?;
+        // }
         Ok(())
     }
 }
+
 
 impl ObjectError {
     pub fn internal(msg: impl ToString) -> Self {

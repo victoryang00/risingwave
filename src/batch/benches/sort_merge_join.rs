@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+pub mod utils;
 use criterion::{black_box, criterion_group, criterion_main, BatchSize, BenchmarkId, Criterion};
 use futures::StreamExt;
 use risingwave_batch::executor::test_utils::{gen_sorted_data, MockExecutor};
@@ -19,11 +19,8 @@ use risingwave_batch::executor::{BoxedExecutor, JoinType, SortMergeJoinExecutor}
 use risingwave_common::catalog::schema_test_utils::field_n;
 use risingwave_common::types::DataType;
 use risingwave_common::util::sort_util::OrderType;
-use tikv_jemallocator::Jemalloc;
+use utils::bench_join;
 use tokio::runtime::Runtime;
-
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
 
 fn create_sort_merge_join_executor(
     left_chunk_size: usize,

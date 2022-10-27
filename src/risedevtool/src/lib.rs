@@ -16,6 +16,7 @@
 #![feature(exit_status_error)]
 #![feature(let_else)]
 #![feature(lint_reasons)]
+#![feature(let_chains)]
 
 mod config;
 pub use config::*;

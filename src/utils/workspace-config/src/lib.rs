@@ -12,16 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#![cfg_attr(coverage, feature(no_coverage))]
-
-
-#[cfg_attr(coverage, no_coverage)]
-fn main() {
-    use clap::StructOpt;
-
-    let opts = risingwave_frontend::FrontendOpts::parse();
-
-    risingwave_rt::init_risingwave_logger(risingwave_rt::LoggerSettings::new_default());
-
-    risingwave_rt::main_okk(risingwave_frontend::start(opts))
-}
+//! This crate includes dependencies that need to be statically-linked.
+#[cfg(all(
+    not(debug_assertions),
+    any(
+        not(feature = "enable-static-link"),
+        not(feature = "enable-static-log-level"),
+    ),
+))]

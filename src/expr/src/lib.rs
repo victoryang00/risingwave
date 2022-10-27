@@ -38,6 +38,7 @@
 #![feature(type_alias_impl_trait)]
 #![feature(generators)]
 #![feature(iterator_try_collect)]
+#![feature(let_chains)]
 
 pub mod error;
 pub mod expr;

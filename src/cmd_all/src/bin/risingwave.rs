@@ -13,11 +13,7 @@
 // limitations under the License.
 
 #![cfg_attr(coverage, feature(no_coverage))]
-
-use tikv_jemallocator::Jemalloc;
-
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
+#![feature(let_chains)]
 
 use std::collections::HashMap;
 use std::env;

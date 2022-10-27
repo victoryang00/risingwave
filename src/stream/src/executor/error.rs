@@ -30,7 +30,7 @@ use super::Barrier;
 enum StreamExecutorErrorInner {
     #[error("Storage error: {0}")]
     Storage(
-        #[backtrace]
+        
         #[source]
         StorageError,
     ),
@@ -100,15 +100,15 @@ impl std::fmt::Debug for StreamExecutorError {
 
         write!(f, "{}", self.inner)?;
         writeln!(f)?;
-        if let Some(backtrace) = self.inner.backtrace() {
-            write!(f, "  backtrace of inner error:\n{}", backtrace)?;
-        } else {
-            write!(
-                f,
-                "  backtrace of `StreamExecutorError`:\n{}",
-                self.backtrace
-            )?;
-        }
+        // if let Some(backtrace) = self.inner.backtrace() {
+        //     write!(f, "  backtrace of inner error:\n{}", backtrace)?;
+        // } else {
+        //     write!(
+        //         f,
+        //         "  backtrace of `StreamExecutorError`:\n{}",
+        //         self.backtrace
+        //     )?;
+        // }
         Ok(())
     }
 }

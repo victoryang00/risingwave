@@ -16,5 +16,7 @@
 #![feature(generic_associated_types)]
 #![feature(trait_alias)]
 #![feature(type_alias_impl_trait)]
-
+#![feature(once_cell)]
+#![feature(lint_reasons)]
+#![feature(let_chains)]
 pub mod object;

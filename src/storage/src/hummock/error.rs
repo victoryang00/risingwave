@@ -63,7 +63,7 @@ enum HummockErrorInner {
 pub struct HummockError {
     #[from]
     inner: HummockErrorInner,
-    backtrace: Backtrace,
+    // backtrace: Backtrace,
 }
 
 impl HummockError {
@@ -154,15 +154,15 @@ impl std::fmt::Debug for HummockError {
 
         write!(f, "{}", self.inner)?;
         writeln!(f)?;
-        if let Some(backtrace) = self.inner.backtrace() {
-            write!(f, "  backtrace of inner error:\n{}", backtrace)?;
-        } else {
-            write!(
-                f,
-                "  backtrace of `TracedHummockError`:\n{}",
-                self.backtrace
-            )?;
-        }
+        // if let Some(backtrace) = self.inner.backtrace() {
+        //     write!(f, "  backtrace of inner error:\n{}", backtrace)?;
+        // } else {
+        //     write!(
+        //         f,
+        //         "  backtrace of `TracedHummockError`:\n{}",
+        //         self.backtrace
+        //     )?;
+        // }
         Ok(())
     }
 }

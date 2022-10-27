@@ -24,11 +24,7 @@ use risingwave_expr::expr::AggKind;
 use risingwave_expr::vector_op::agg::AggStateFactory;
 use risingwave_pb::expr::agg_call::Arg;
 use risingwave_pb::expr::{AggCall, InputRefExpr};
-use tikv_jemallocator::Jemalloc;
 use tokio::runtime::Runtime;
-
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
 
 fn create_agg_call(
     input_schema: &Schema,

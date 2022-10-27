@@ -92,7 +92,7 @@ pub enum ErrorCode {
     IoError(IoError),
     #[error("Storage error: {0:?}")]
     StorageError(
-        #[backtrace]
+        
         #[source]
         BoxedError,
     ),
@@ -104,7 +104,7 @@ pub enum ErrorCode {
     ArrayError(ArrayError),
     #[error("Stream error: {0:?}")]
     StreamError(
-        #[backtrace]
+        
         #[source]
         BoxedError,
     ),
@@ -258,10 +258,10 @@ impl Debug for RwError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{}\n{}",
+            "{}\n",
             self.inner,
             // Use inner error's backtrace by default, otherwise use the generated one in `From`.
-            self.inner.backtrace().unwrap_or(&*self.backtrace)
+            // self.inner.backtrace().unwrap_or(&*self.backtrace)
         )
     }
 }

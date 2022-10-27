@@ -22,7 +22,7 @@ use crate::hummock::HummockError;
 pub enum StorageError {
     #[error("Hummock error: {0}")]
     Hummock(
-        #[backtrace]
+        
         #[from]
         HummockError,
     ),
@@ -59,11 +59,11 @@ impl std::fmt::Debug for StorageError {
 
         write!(f, "{}", self)?;
         writeln!(f)?;
-        if let Some(backtrace) = self.backtrace() {
-            // Since we forward all backtraces from source, `self.backtrace()` is the backtrace of
-            // inner error.
-            write!(f, "  backtrace of inner error:\n{}", backtrace)?;
-        }
+        // if let Some(backtrace) = self.backtrace() {
+        //     // Since we forward all backtraces from source, `self.backtrace()` is the backtrace of
+        //     // inner error.
+        //     write!(f, "  backtrace of inner error:\n{}", backtrace)?;
+        // }
 
         Ok(())
     }

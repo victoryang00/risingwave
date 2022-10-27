@@ -47,6 +47,24 @@ impl Executor for ExpandExecutor {
 }
 
 impl ExpandExecutor {
+    pub fn new(
+        input: Box<dyn Executor>,
+        pk_indices: String,
+        column_subsets: Vec<Vec<usize>>,
+    ) -> Self {
+        let schema = {
+            let mut fields = input.schema().clone().into_fields();
+            fields.extend(fields.clone());
+            fields.push(Field::with_name(DataType::Int64, "flag"));
+            Schema::new(fields)
+        };
+        Self {
+            child:input,
+            schema,
+            identity:pk_indices,
+            column_subsets,
+        }
+    }
     #[try_stream(boxed, ok = DataChunk, error = RwError)]
     async fn do_execute(self: Box<Self>) {
         let mut data_chunk_builder = DataChunkBuilder::with_default_size(self.schema.data_types());

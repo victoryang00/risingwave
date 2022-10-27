@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #![allow(clippy::derive_partial_eq_without_eq)]
+#![feature(let_chains)]
 //! Data-driven tests.
 
 mod resolve_id;

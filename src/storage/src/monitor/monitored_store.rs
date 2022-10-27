@@ -321,7 +321,7 @@ where
     type Item = (Bytes, Bytes);
 
     type NextFuture<'a> =
-        impl Future<Output = crate::error::StorageResult<Option<Self::Item>>> + Send;
+        impl Future<Output = crate::error::StorageResult<Option<Self::Item>>> + Send + 'a;
 
     fn next(&mut self) -> Self::NextFuture<'_> {
         async move {

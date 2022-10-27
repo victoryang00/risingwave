@@ -82,7 +82,7 @@ impl MonitorService for MonitorServiceImpl {
         }
         let time = request.into_inner().get_sleep_s();
         let guard = pprof::ProfilerGuardBuilder::default()
-            .blocklist(&["libc", "libgcc", "pthread", "vdso"])
+            // .blocklist(&["libc", "libgcc", "pthread", "vdso"])
             .build()
             .unwrap();
         tokio::time::sleep(Duration::from_secs(time)).await;

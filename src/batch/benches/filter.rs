@@ -25,11 +25,8 @@ use risingwave_pb::expr::expr_node::Type::{
     ConstantValue as TConstValue, Equal, InputRef, Modulus,
 };
 use risingwave_pb::expr::{ConstantValue, ExprNode, FunctionCall, InputRefExpr};
-use tikv_jemallocator::Jemalloc;
 use tokio::runtime::Runtime;
 
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
 
 fn create_filter_executor(chunk_size: usize, chunk_num: usize) -> BoxedExecutor {
     let input_data = gen_data(chunk_size, chunk_num, &[DataType::Int64]);

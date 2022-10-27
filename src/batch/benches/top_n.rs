@@ -19,11 +19,8 @@ use risingwave_batch::executor::{BoxedExecutor, TopNExecutor};
 use risingwave_common::catalog::{Field, Schema};
 use risingwave_common::types::DataType;
 use risingwave_common::util::sort_util::{OrderPair, OrderType};
-use tikv_jemallocator::Jemalloc;
 use tokio::runtime::Runtime;
 
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
 
 fn create_top_n_executor(
     chunk_size: usize,

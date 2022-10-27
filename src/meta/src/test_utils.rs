@@ -12,12 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::net::SocketAddr;
-use std::time::Duration;
-
-use tokio::sync::oneshot::Sender;
-use tokio::task::JoinHandle;
-
-use crate::manager::MetaOpts;
-use crate::rpc::server::MetaStoreBackend;
-use crate::AddressInfo;
+use stats_alloc::StatsAlloc;

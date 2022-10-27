@@ -36,7 +36,7 @@
 #![feature(assert_matches)]
 #![feature(map_first_last)]
 #![feature(lint_reasons)]
-
+#![feature(let_chains)]
 #[macro_use]
 mod catalog;
 pub use catalog::TableCatalog;

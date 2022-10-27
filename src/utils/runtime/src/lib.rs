@@ -173,7 +173,7 @@ pub fn enable_parking_lot_deadlock_detection() {
             println!("Deadlock #{}", i);
             for t in threads {
                 println!("Thread Id {:#?}", t.thread_id());
-                println!("{:#?}", t.backtrace());
+                // println!("{:#?}", t.backtrace());
             }
         }
     });
@@ -189,7 +189,7 @@ fn spawn_prof_thread(profile_path: String) -> std::thread::JoinHandle<()> {
         let mut cnt = 0;
         loop {
             let guard = pprof::ProfilerGuardBuilder::default()
-                .blocklist(&["libc", "libgcc", "pthread", "vdso"])
+                // .blocklist(&["libc", "libgcc", "pthread", "vdso"])
                 .build()
                 .unwrap();
             std::thread::sleep(Duration::from_secs(60));

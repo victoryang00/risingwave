@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+pub mod utils;
 use criterion::{black_box, criterion_group, criterion_main, BatchSize, BenchmarkId, Criterion};
 use futures::StreamExt;
 use risingwave_batch::executor::hash_join::HashJoinExecutor;
@@ -27,11 +27,9 @@ use risingwave_pb::expr::expr_node::Type::{
     ConstantValue as TConstValue, GreaterThan, InputRef, Modulus,
 };
 use risingwave_pb::expr::{ConstantValue, ExprNode, FunctionCall, InputRefExpr};
-use tikv_jemallocator::Jemalloc;
+use utils::bench_join;
 use tokio::runtime::Runtime;
 
-#[global_allocator]
-static GLOBAL: Jemalloc = Jemalloc;
 
 fn create_hash_join_executor(
     join_type: JoinType,

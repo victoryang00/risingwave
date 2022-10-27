@@ -273,8 +273,7 @@ impl MemoryStateStoreIter {
 impl StateStoreIter for MemoryStateStoreIter {
     type Item = (Bytes, Bytes);
 
-    type NextFuture<'a> =
-        impl Future<Output = crate::error::StorageResult<Option<Self::Item>>> + Send;
+    type NextFuture<'a> = impl Future<Output = StorageResult<Option<Self::Item>>> + Send + 'a;
 
     fn next(&mut self) -> Self::NextFuture<'_> {
         async move {
