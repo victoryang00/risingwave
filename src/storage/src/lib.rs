@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #![feature(let_chains)]
-// #![feature(allocator_api)]
+#![feature(allocator_api)]
 #![feature(backtrace)]
 #![feature(binary_heap_drain_sorted)]
 #![feature(bound_as_ref)]

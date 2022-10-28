@@ -35,7 +35,7 @@
 #![feature(type_alias_impl_trait)]
 #![feature(test)]
 #![feature(trusted_len)]
-// #![feature(allocator_api)]
+#![feature(allocator_api)]
 #![feature(lint_reasons)]
 #![feature(generators)]
 #![feature(map_try_insert)]

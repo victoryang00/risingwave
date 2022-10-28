@@ -42,7 +42,7 @@
 #![feature(proc_macro_hygiene)]
 #![feature(stmt_expr_attributes)]
 #![feature(unzip_option)]
-// #![feature(allocator_api)]
+#![feature(allocator_api)]
 #![feature(map_try_insert)]
 #![feature(result_option_inspect)]
 #![feature(never_type)]

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// #![feature(allocator_api)]
+#![feature(allocator_api)]
 
 use std::alloc::Allocator;
 use std::ops::Deref;
